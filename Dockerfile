@@ -4,7 +4,7 @@ FROM zoxi/container-debian:latest
 MAINTAINER zoxi
 
 # Installation des prérequis
-RUN apt-get isntall -qy curl
+RUN apt-get install -qy curl
 
 # Installation de btsync
 RUN sh -c "$(curl -fsSL http://debian.yeasoft.net/add-btsync-repository.sh)" && \
