@@ -1,4 +1,16 @@
 #!/bin/bash
 
-# TEST
-sed -i 's/"storage_path" : "\/var\/lib\/btsync\/",/"storage_path" : "\/config/",/g' /etc/btsync/debconf-default.conf
+# Création du ficher de config
+cat <<'EOT' > /config/btsync.conf
+{
+  "device_name": "unRAID",
+  "storage_path" : "/config/.sync",
+  "use_upnp" : false,
+  "download_limit" : 0,
+  "upload_limit" : 0,
+  "webui" :
+  {
+    "listen" : "0.0.0.0:8888"
+  }
+}
+EOT
