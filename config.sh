@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Création du ficher de config
-cat <<'EOF' > /config/btsync.conf
+cat <<EOF > /config/btsync.conf
 {
   "device_name": "unRAID",
   "storage_path" : "/config/.sync",
