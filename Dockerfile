@@ -10,14 +10,14 @@ RUN apt-get install -qy curl
 RUN mkdir -p /opt/btsync
 RUN curl -s -k -L "https://download-cdn.getsyncapp.com/stable/linux-x64/BitTorrent-Sync_x64.tar.gz" |  tar -xzf - -C /opt/btsync
     
+# Montage des volumes
+VOLUME /config
+VOLUME /sync
+
 # Ajout du script de configuration
 ADD config.sh /config.sh
 RUN chmod +x /*.sh && \
     /bin/bash /config.sh
-    
-# Montage des volumes
-VOLUME /config
-VOLUME /sync
 
 # Ajout des droits à "/opt/btsync"
 RUN chown -R nobody:users /opt/btsync /config
