@@ -15,9 +15,10 @@ VOLUME /config
 VOLUME /sync
 
 # Ajout du script de configuration
-#ADD config.sh /config.sh
-#RUN chmod +x /*.sh && \
-#    /bin/bash /config.sh
+ADD config.sh /config.sh
+RUN chmod +x /*.sh && \
+    /bin/bash /config.sh
+RUN mkdir -p /config/.sync
 
 # Ajout des droits à "/opt/btsync"
 RUN chown -R nobody:users /opt/btsync /config
