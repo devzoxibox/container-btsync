@@ -7,9 +7,8 @@ MAINTAINER zoxi
 RUN apt-get install -qy curl
 
 # Installation de btsync
-RUN sh -c "$(curl -fsSL http://debian.yeasoft.net/add-btsync-repository.sh)" && \
-    apt-get update && \
-    apt-get install -qy btsync
+RUN mkdir -p /opt/btsync
+RUN curl -s -k -L "https://download-cdn.getsyncapp.com/stable/linux-x64/BitTorrent-Sync_x64.tar.gz" |  tar -xzf - -C /opt/btsync
     
 # Ajout du script de configuration
 ADD config.sh /config.sh
@@ -20,9 +19,9 @@ RUN chmod +x /*.sh && \
 VOLUME /config
 VOLUME /sync
 
-# Ajout des droits à "/etc/btsync"
-RUN chown -R nobody:users /etc/btsync
-RUN chmod -R 775 /etc/btsync
+# Ajout des droits à "/opt/btsync"
+RUN chown -R nobody:users /opt/btsync
+RUN chmod -R 775 /opt/btsync
 
 # Ajout du script de démarrage
 ADD start.sh /start.sh
