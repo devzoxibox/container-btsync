@@ -11,7 +11,7 @@ RUN mkdir -p /opt/btsync
 RUN curl -s -k -L "https://download-cdn.getsyncapp.com/stable/linux-x64/BitTorrent-Sync_x64.tar.gz" |  tar -xzf - -C /opt/btsync
 
 # Ajout du script de configuration
-ADD btsync.conf /tmp/btsync.conf
+#ADD btsync.conf /tmp/btsync.conf
 ADD config.sh /config.sh
 RUN chmod +x /*.sh && \
     /bin/bash /config.sh
