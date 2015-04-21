@@ -20,8 +20,6 @@ RUN chmod +x /*.sh && \
 VOLUME /config
 VOLUME /sync
 
-
-
 # Ajout des droits à "/opt/btsync"
 RUN chown -R nobody:users /opt/btsync /config
 RUN chmod -R 775 /opt/btsync /config
